@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+ webserver:
+  container_name: webserver
+  image: iweb
+  volumes:
+    - laravel_data:/usr/app/
+    - angular_data:/usr/app/angular/
+  ports:
+   - 8000:80
+   - 8001:81
+ db:
+  container_name: db
+  image: mysql/mysql-server:latest
+  restart: always
+  environment:
+   MYSQL_ROOT_PASSWORD: toor
+   MYSQL_DATABASE: laravel_db
+   MYSQL_USER: user
+   MYSQL_PASSWORD: pass
+  ports:
+   - "9906:3306"
+  volumes:
+   - db_data:/var/lib/mysql
+#  phpmyadmin:
+#   image: phpmyadmin:latest
+#   ports:
+#    - '8080:80'
+#   restart: always
+#   environment:
+#    PMA_HOST: db
+#   depends_on:
+#    - db
+
+volumes:
+ db_data: {}
+ laravel_data: {}
+ angular_data: {}
+
+networks:
+ MyDevStack: {}
