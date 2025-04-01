@@ -5,7 +5,6 @@
 - /src
     - dist (*Projet angular compilé*)
 - Dockerfile
-- docker-compose.yml
 - README.MD
 
 ### Utilisation :
